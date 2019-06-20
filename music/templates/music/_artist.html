@@ -1,0 +1,11 @@
+<div class="post-media">
+    <h3>{{ artist.artist_name|safe }}</h3>
+    <h4>@<a href="{{ artist.website }}">{{ artist.website }}</a></h4>
+<li>
+    {% for alb in artist.album_set.all %}
+        <ul><a href="{% url 'music:albumpage' pk=alb.pk slug=alb.get_slug %}">{{ alb.album_name }}</a>
+        </ul>
+    {% endfor %}
+</li>
+
+</div>

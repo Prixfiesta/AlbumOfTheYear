@@ -1,0 +1,5 @@
+<div class="post-media">
+    <a href="{% url 'music:albumpage' pk=album.pk slug=album.get_slug %}">{{ album.album_name }}</a>    <a href="{% url 'music:artistpage' pk=album.artist.pk slug=album.artist.get_slug %}">{{ album.artist.artist_name|safe }}</a><h3>Release on : {{ album.release_date }}</h3>
+    <a href="{% url 'music:albumpage' pk=album.pk slug=album.get_slug %}">{{ album.album_name }}</a>    <a href="{% url 'music:artistpage' pk=album.artist.pk slug=album.artist.get_slug %}">{{ album.artist.artist_name|safe }}</a>  Release on : {{ album.release_date }}
+
+</div>

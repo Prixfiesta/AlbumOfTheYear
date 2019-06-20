@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block body_block %}
+    <h2> Album of The Year
+    </h2>
+    {% if forms.errors %}
+        <p style="color:red">Your Username and Password did not match.Please try again.</p>
+
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}"/>
+        {% for field in form %}
+        <p>
+            {{ field.label_tag }}<br>
+            {{ field }}<br>
+            {% for error in field.errors %}
+                <p style="color:red">{{ error }}</p>
+
+            {% endfor %}
+            {% if field.help_text %}
+
+                <p><small style="color:grey">{{ field.help_text }}</small></p>
+
+            {% endif %}
+        </p>
+
+        {% endfor %}
+        <button type="submit">Log in</button>
+    </form>
+{% endblock %}

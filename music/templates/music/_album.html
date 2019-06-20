@@ -1,0 +1,14 @@
+{% load poll_extras %}
+<div class="post-media">
+    <h3> <a href="{% url 'music:artistpage' pk=album.artist.pk slug=album.artist.get_slug %}">{{ album.artist.artist_name|safe }}</a></h3>
+    <h2>{{ album.album_name }}</h2>
+    <h3>Release on : {{ album.release_date }}</h3>
+    <h4>
+        Rating : {{ album.avg_rating }}({{ album.getratingcount }})
+
+    </h4>
+{#    {{ album.album_name }}#}
+{#    a{{ rating }}#}
+{#    {{ td }}#}
+    {% getratingofuser album.pk user %}
+</div>

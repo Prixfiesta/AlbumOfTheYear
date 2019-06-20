@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block body_block %}
+    <div class="col-md-8">
+        <table style="width: 100%">
+        <tr>
+            <th>
+                Album
+            </th>
+            <th>
+                Average Rating
+            </th>
+            <th>
+                Artist
+            </th>
+            <th>
+                Release Date
+            </th>
+
+        </tr>
+
+            {% for album in album_list  %}
+{#        {% include  'music/album_in_a_list.html' %}#}
+                <tr>
+                    <th>
+                        <a href="{% url 'music:albumpage' pk=album.pk slug=album.get_slug %}">{{ album.album_name }}</a>
+
+                    </th>
+                    <th>
+                        <a href="{% url 'music:albumreview' album.pk album.get_slug %}">{{ album.avg_rating }}({{ album.getratingcount }})</a>
+
+                    </th>
+
+                    <th>
+                        <a href="{% url 'music:artistpage' pk=album.artist.pk slug=album.artist.get_slug %}">{{ album.artist }}</a>
+                    </th>
+
+                    <th>
+                        {{ album.release_date }}
+                    </th>
+                </tr>
+        {% endfor %}
+
+
+    </table>
+
+    <form action="{% url 'music:albumcreate' %}">
+        <input type="submit" class="btn btn-primary" value="Add Album">
+        </form>
+    </div>
+{% endblock %}

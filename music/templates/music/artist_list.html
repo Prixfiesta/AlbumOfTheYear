@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block body_block %}
+    < class="col-md-8">
+        <h1>Artists: </h1>
+        <ul>
+            {% for artist in artist_list  %}
+                <h5><li><a href="{% url 'music:artistpage' pk=artist.pk slug=artist.get_slug %}">{{ artist.artist_name }}</a></li></h5>
+              {% endfor %}
+
+        </ul>
+        <form action="{% url 'music:artistcreate' %}">
+        <input type="submit" class="btn btn-primary" value="Add Artist">
+        </form>
+    </div>
+{% endblock %}

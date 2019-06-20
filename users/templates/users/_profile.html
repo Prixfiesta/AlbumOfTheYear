@@ -1,0 +1,39 @@
+<div class="post-media">
+    <h1>@ {{ profile.user.username }}</h1>
+<br>
+   <h1>All Reviews:</h1>
+{% if not profile.has_review %}
+    <h3>User Has No Reviews</h3>
+{% endif %}
+{% if profile.has_review %}
+    <table style="width: 100%">
+      <tr>
+          <th>
+              Album
+          </th>
+
+          <th>
+              Artist
+          </th>
+          <th>
+              Rating
+          </th>
+
+      </tr>
+        {% for review in profile.review_set.all  %}
+            <tr>
+                <th>
+                    <a href="{% url 'music:albumpage' review.album.pk review.album.get_slug %}">{{ review.album.album_name }}</a>
+                </th>
+                <th>
+                    <a href="{% url 'music:artistpage' review.album.artist.pk review.album.artist.get_slug %}"> {{ review.album.artist.artist_name }}</a>
+                </th>
+                <th>
+                    {{ review.rating }}
+                </th>
+            </tr>
+
+        {% endfor %}
+    </table>
+{% endif %}
+</div>
