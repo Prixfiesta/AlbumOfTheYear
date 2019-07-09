@@ -1,5 +1,6 @@
 {% load poll_extras %}
 <div class="post-media">
+    <img src="{{ album.image.url }}" width="100px">
     <h3> <a href="{% url 'music:artistpage' pk=album.artist.pk slug=album.artist.get_slug %}">{{ album.artist.artist_name|safe }}</a></h3>
     <h2>{{ album.album_name }}</h2>
     <h3>Release on : {{ album.release_date }}</h3>

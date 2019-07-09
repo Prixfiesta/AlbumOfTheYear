@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body_block %}
+    <h4>Update Existing Review</h4>
+    <form id="reviewUpdate" action="{% url 'review:changereview' review.pk review.get_slug  %}" method="post">
+<x></x>        {% csrf_token %}
+        {{ form|crispy }}
+    <input type="submit" name="" value="Add" class="btn btn-primary btn-large">
+    </form>
+
+{% endblock %}

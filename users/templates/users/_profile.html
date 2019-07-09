@@ -1,7 +1,9 @@
 <div class="post-media">
     <h1>@ {{ profile.user.username }}</h1>
 <br>
+<img src="{{ profile.image.url }}" width="100px">
    <h1>All Reviews:</h1>
+
 {% if not profile.has_review %}
     <h3>User Has No Reviews</h3>
 {% endif %}

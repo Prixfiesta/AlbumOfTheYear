@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body_block %}
+    <h4>Add a new Review</h4>
+    <form id="reviewForm" action="{% url 'review:deletereview' review.pk review.get_slug  %}" method="post">
+        {% csrf_token %}
+        Are you sure you want to delete your review of {{ review.album }}
+    <input type="submit" name="" value="confirm" class="btn btn-primary btn-large">
+    </form>
+
+{% endblock %}

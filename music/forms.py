@@ -7,7 +7,7 @@ class AlbumCreateForm(forms.ModelForm):
 
     class Meta:
         model = Album
-        fields = ('album_name','artist','release_date',)
+        fields = ('album_name','artist','release_date','image')
     def save(self, commit=True):
         artist,created = Artist.objects.get_or_create(artist_name=self.cleaned_data['artist'],defaults={'website':''})
 

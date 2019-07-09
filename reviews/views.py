@@ -21,3 +21,21 @@ def add_review(request,album_id):
     else :
         form = forms.ReviewForm(request.user,album)
     return render(request,'reviews/review_form.html',{'form':form,'album':album,'user':request.user})
+
+class UpdateReview(generic.UpdateView):
+    model = models.Review
+    fields = ['rating']
+    template_name = 'reviews/review_update.html'
+
+    def get_success_url(self):
+        reviewpk = self.kwargs['pk']
+        reviewslug = self.kwargs['slug']
+        return reverse_lazy('review:reviewdetail',kwargs={'pk':reviewpk,'slug':reviewslug})
+
+class DeleteReview(generic.DeleteView):
+    model = models.Review
+
+    def get_success_url(self):
+        reviewpk = self.kwargs['pk']
+        review = models.Review.objects.get(pk=reviewpk)
+        return reverse_lazy('music:albumpage',kwargs={'pk':review.album.pk,'slug':review.album.get_slug()})

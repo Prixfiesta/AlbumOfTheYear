@@ -8,6 +8,7 @@ from django.utils.text import slugify
 class Artist(models.Model):
     artist_name = models.CharField(max_length=40,blank = False,null=False)
     website = models.URLField(max_length=100)
+    image = models.ImageField(upload_to='artist-image',blank=True,default="download.png")
 
     def __str__(self):
         return self.artist_name
@@ -24,6 +25,7 @@ class Album(models.Model):
     artist = models.ForeignKey(Artist,on_delete=models.CASCADE)
     release_date = models.DateField(blank=False,null  = False)
     added_on = models.DateTimeField(default=timezone.now())
+    image = models.ImageField(upload_to='album-image',blank=True,default="download.png")
 
     def __str__(self):
         return self.album_name

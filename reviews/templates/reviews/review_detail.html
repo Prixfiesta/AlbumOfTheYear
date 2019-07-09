@@ -4,4 +4,7 @@
     Album : {{ review.album.album_name }}
     Score Given : {{ review.rating }}
     By: {{ review.user.user.username }}
+{#    {{ review.pk }}#}
+    <a href="{% url 'review:changereview' review.pk review.get_slug %}"> Change review</a>
+    <a href="{% url 'review:deletereview' review.pk review.get_slug %}"> Delete review</a>
 {% endblock %}

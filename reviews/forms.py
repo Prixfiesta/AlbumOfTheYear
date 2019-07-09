@@ -10,6 +10,7 @@ class ReviewForm(ModelForm):
         self.album = album
         super(ReviewForm,self).__init__(*args,**kwargs)
 
+
     def save(self):
         review = super(ReviewForm,self).save(commit=False)
         review.user = self.user.profile

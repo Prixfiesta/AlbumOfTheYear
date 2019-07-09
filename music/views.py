@@ -14,7 +14,7 @@ User = get_user_model()
 class ArtistCreateView(LoginRequiredMixin,generic.CreateView):
     model = models.Artist
     template_name = 'music/artist_form.html'
-    fields = ('artist_name','website')
+    fields = ('artist_name','website','image')
     success_url = reverse_lazy('music:artistlist')
 
 class ArtistList(generic.ListView):
